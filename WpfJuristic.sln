@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfJuristic", "WpfJuristic\WpfJuristic.csproj", "{7ABDE311-4418-42C0-93BA-47CEC0B25FCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ABDE311-4418-42C0-93BA-47CEC0B25FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABDE311-4418-42C0-93BA-47CEC0B25FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABDE311-4418-42C0-93BA-47CEC0B25FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABDE311-4418-42C0-93BA-47CEC0B25FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD958510-6BCC-43B9-B2B4-69AF006D7C66}
+	EndGlobalSection
+EndGlobal
