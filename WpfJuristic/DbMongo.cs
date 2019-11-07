@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace WpfJuristic
 {
-    class DbMongo { 
+    public class DbMongo { 
         MongoClient client = null;
         IMongoDatabase twstock_db = null;
         public void connect()
@@ -50,6 +50,23 @@ namespace WpfJuristic
                 res = new YearSeason(stock_found[0]["year"].AsInt32, stock_found[0]["season"].AsInt32);
             }
             return res;
+        }
+
+        public List<BsonDocument> FinancialReport_FindAll(String stock_index)
+        {
+            YearSeason res = null;
+            var collection = twstock_db.GetCollection<BsonDocument>("financial_report");
+
+            //var filter = Builders<Dictionary<String, String>>.Filter.Eq("name", "dsfasdf");
+            //var filter = Builders<BsonDocument>.Filter.Eq("name", "dsfasdf");
+            //var query = Query.EQ("name", "dsfasdf");
+            //var res = collection.Find(filter).First();
+            var stock_found = collection.Find(x => x["stock_index"] == stock_index).Sort("{year:1, season:1}").ToList();
+            /*if (stock_found.Count != 0)
+            {
+                res = new YearSeason(stock_found[0]["year"].AsInt32, stock_found[0]["season"].AsInt32);
+            }*/
+            return stock_found;
         }
         /*
         public void StockData_Save(ArrayList data)

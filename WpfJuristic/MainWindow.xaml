@@ -27,7 +27,15 @@
             <ComboBox x:Name="combo_stock_index" Width="120" IsEditable="True"/>
             <Button x:Name="btn_query" Content="Query" Width="75" Click="btn_query_Click" IsCancel="True"/>
         </Menu>
-        <TabControl>
+        <TabControl RenderTransformOrigin="0.5,0.5" Margin="1,0,-1,0">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.22"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.427"/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -39,9 +47,45 @@
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-296"/>
+                <Grid Background="#FFE5E5E5" 
+                      RenderTransformOrigin="0.51,0.496">
+                    <ListView x:Name="Financial_items" HorizontalAlignment="Left" Height="482" Margin="10,10,0,0" VerticalAlignment="Top" Width="402" MouseLeftButtonUp="Financial_items_MouseLeftButtonUp">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" Width="20"/>
+                                <GridViewColumn Header="Item" DisplayMemberBinding="{Binding Item}"/>
+                                <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Download">
+                <Grid Background="#FFE5E5E5" 
+                      RenderTransformOrigin="0.51,0.496" HorizontalAlignment="Right" Margin="0,0,2,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="87*"/>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="887*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Download" Content="Download" Click="Download_Click" HorizontalAlignment="Left" Grid.Column="3" Margin="261.381,0,584,0" VerticalAlignment="Top"/>
+                    <Button x:Name="DownloadStockNames" Content="Update company list" Click="DownloadStockName_Click" Grid.Column="3" Margin="222.381,0,545,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Strategy">
+                <Grid Background="#FFE5E5E5" 
+                      RenderTransformOrigin="0.51,0.496">
+                    <Button x:Name="Evaluate" Content="Evaluate" HorizontalAlignment="Center" Click="Evaluate_Click"/>
+
+                </Grid>
+                
             </TabItem>
         </TabControl>
-
     </StackPanel>
 </Window>

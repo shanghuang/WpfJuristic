@@ -24,7 +24,9 @@ namespace WpfJuristic
         public long close_buy_volume;
         public float close_sell_price;
         public long close_sell_volume;
-        public float pe_ratio;
+        public long foreign_buy;
+        public long foreign_sell;
+        public long foreign_total;
 
         public StockTradeInfo(MySqlDataReader rdr)
         {
@@ -44,6 +46,10 @@ namespace WpfJuristic
             //pe_ratio = float.Parse(rdr["pe_ratio"].ToString());
             close_buy_volume = (int)rdr["close_buy_volume"];
             close_sell_volume = (int)rdr["close_sell_volume"];
+            foreign_buy = rdr.IsDBNull(rdr.GetOrdinal("foreign_buy")) ? 0 : (int)rdr["foreign_buy"];
+            foreign_sell = rdr.IsDBNull(rdr.GetOrdinal("foreign_sell")) ? 0 : (int)rdr["foreign_sell"];
+            foreign_total = rdr.IsDBNull(rdr.GetOrdinal("foreign_total")) ? 0 : (int)rdr["foreign_total"];
+
         }
 
         //0         1           2       3       4       5       6       7   8                   9           10      11              12             13       14
@@ -80,7 +86,9 @@ namespace WpfJuristic
             long.TryParse(((string)parms[12]).Replace(",", ""), out close_buy_volume);
             float.TryParse(((string)parms[13]).Replace(",", ""), out close_sell_price);
             long.TryParse(((string)parms[14]).Replace(",", ""), out close_sell_volume);
-            float.TryParse(((string)parms[15]).Replace(",", ""), out pe_ratio);
+            long.TryParse(((string)parms[14]).Replace(",", ""), out foreign_buy);
+            long.TryParse(((string)parms[14]).Replace(",", ""), out foreign_sell);
+            long.TryParse(((string)parms[14]).Replace(",", ""), out foreign_total);
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfJuristic
 {
-    class YearSeason
+    public class YearSeason
     {
         public int year { get; set; }
         public int season { get; set; }
