@@ -44,8 +44,8 @@ namespace WpfJuristic
         private void btn_query_Click(object sender, RoutedEventArgs e)
         {
             String stock_selected = (String)combo_stock_index.SelectedItem;
-            //StockTradeInfo[] hist = sql.GetStockTradeHistory(stock_selected, 50);
-            //show_kd(kd_canvas, hist);
+            StockTradeInfo[] hist = DbSql.GetStockTradeHistory(stock_selected, 50, true);
+            show_kd(kd_canvas, hist);
 
             DbMongo mongo = new DbMongo();
             mongo.connect();
@@ -195,7 +195,14 @@ namespace WpfJuristic
         private void Evaluate_Click(object sender, RoutedEventArgs e)
         {
             Evaluator eva = new Evaluator(new StrategyForeignConsecutive());
-            float ratio = eva.simulate_transation("2379");
+            ArrayList trade_history = new ArrayList();
+            float ratio = eva.simulate_transation("2379", trade_history);
+
+            foreach (Object obj in trade_history)
+            {
+                Evaluator.Trade_Cmd cmd = (Evaluator.Trade_Cmd)obj;
+                this.Trade_history.Items.Add(cmd);
+            }
         }
     }
 }

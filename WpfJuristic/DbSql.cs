@@ -28,6 +28,7 @@ namespace WpfJuristic
                 conn = new MySql.Data.MySqlClient.MySqlConnection();
                 conn.ConnectionString = myConnectionString;
                 conn.Open();
+                SetupDatabase();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -71,7 +72,7 @@ namespace WpfJuristic
 
             try
             {
-                String qstr = "SELECT * from " + StockDbName(stock_index) + " ORDER by trans_date"+ (desc?"DESC":" ") + "LIMIT " + String.Format("{0}", count) + ";";
+                String qstr = "SELECT * from " + StockDbName(stock_index) + " ORDER by trans_date"+ (desc?" DESC ":" ") + "LIMIT " + String.Format("{0}", count) + ";";
                 MySqlCommand cmd = new MySqlCommand(qstr, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -125,7 +126,7 @@ namespace WpfJuristic
 
 
 
-        public static void SetupDatebase(MySqlConnection conn)//, String stock_index)
+        public static void SetupDatabase()//MySqlConnection conn)//, String stock_index)
         {
             String[] stocks = new string[] { "2370", "2371", "2372", "2373", "2374", "2375", "2376", "2377", "2378", "2379" };
 

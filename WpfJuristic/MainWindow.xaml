@@ -81,10 +81,27 @@
             <TabItem Header="Strategy">
                 <Grid Background="#FFE5E5E5" 
                       RenderTransformOrigin="0.51,0.496">
-                    <Button x:Name="Evaluate" Content="Evaluate" HorizontalAlignment="Center" Click="Evaluate_Click"/>
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="509*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="Evaluate" Content="Evaluate" HorizontalAlignment="Center" Click="Evaluate_Click" Grid.Column="1" Margin="440.033,0,526,0"/>
+                    <ListView x:Name="Trade_history" HorizontalAlignment="Left" Height="482" Margin="10,10,0,0" VerticalAlignment="Top" Width="402"  Grid.Row="1" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Buy" DisplayMemberBinding="{Binding is_buy}" Width="40"/>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding date}"/>
+                                <GridViewColumn Header="Price" DisplayMemberBinding="{Binding price}"/>
+                                <GridViewColumn Header="Performance" DisplayMemberBinding="{Binding perf}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
-                
+
             </TabItem>
         </TabControl>
     </StackPanel>

@@ -23,18 +23,20 @@ namespace WpfJuristic
         {
             this.eval_func = ev_func;
         }
-        class Trade_Cmd
+        public class Trade_Cmd
         {
             public bool is_buy { get; set; }
             public DateTime date { get; set; }
+            public float price { get; set; }
+            public float perf { get; set; }
         }
 
-        public float simulate_transation(String stock_index)
+        public float simulate_transation(String stock_index, ArrayList trade_history )
         {
             StockData stock_data = new StockData(stock_index);
             stock_data.LoadAll();
 
-            ArrayList trade_history = new ArrayList();
+            //ArrayList trade_history = new ArrayList();
             Boolean hold = false;
             DateTime date = START_DATE;
             while (!date.Equals(DateTime.Today))
@@ -79,6 +81,7 @@ namespace WpfJuristic
                     float buy_price = trade_info.open;
                     share = value / buy_price;
                     value = 0;
+                    cmd.price = buy_price;
                 }
                 else
                 {
@@ -86,6 +89,8 @@ namespace WpfJuristic
                     float sell_price = trade_info.open;
                     value = share * sell_price;
                     share = 0;
+                    cmd.price = sell_price;
+                    cmd.perf = value;
                 }
             }
             if (share > 0)

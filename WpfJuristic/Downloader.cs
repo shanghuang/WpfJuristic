@@ -125,9 +125,9 @@ namespace WpfJuristic
 
         public void DownloadToLatest()
         {
-            //BatchDownloadStockTrading();
-            //BatchDownloadFinancialReport();
-            BatchDownloadStockTrading_FixMissing();
+            BatchDownloadStockTrading();
+            BatchDownloadFinancialReport();
+           //BatchDownloadStockTrading_FixMissing();
         }
 
         /*
